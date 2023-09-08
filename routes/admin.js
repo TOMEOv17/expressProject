@@ -30,13 +30,12 @@ router.get('/news/add', (req, res, next) => {
 
 router.post('/news/add', (req, res) => {
   const body = req.body
-
+  
   const newsData = new News(body)
-
+  
   const errors = newsData.validateSync()
-
+  
   newsData.save()
-  res.redirect('/admin')
   res.render('admin/news_form', { title: 'Formularz', errors });
 })
 
